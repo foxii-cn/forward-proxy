@@ -7,8 +7,8 @@ $(curl --retry 10 --connect-timeout 60 --silent 'https://api.github.com/repos/kl
 tar xvf caddy-forwardproxy-naive.tar.xz --strip-components 1
 
 FROM scratch
-COPY --from=builder /workspace/caddy /usr/bin/caddy
 COPY --from=builder /etc/ssl/certs/ /etc/ssl/certs/
+COPY --from=builder /workspace/caddy /usr/bin/caddy
 VOLUME ["/etc/naive"]
 ENTRYPOINT ["/usr/bin/caddy"]
 CMD ["run", "--config", "/etc/naive/Caddyfile", "--adapter", "caddyfile"]
