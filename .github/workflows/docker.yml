@@ -1,5 +1,5 @@
 name: Build and push docker image
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 jobs:
   docker:
     runs-on: ubuntu-latest
